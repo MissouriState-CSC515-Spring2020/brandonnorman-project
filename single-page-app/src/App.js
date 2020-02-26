@@ -37,6 +37,19 @@ class Main extends React.Component {
   render() {
     return(
     <Router>
+        <nav>
+            <Link to={`/`}>
+              <span>Home</span>
+            </Link>
+            <p>Catagories:
+            <Link to={`/Catagories/landscape`}>
+              <span>Landscapes</span>
+            </Link>
+            <Link to={`/Catagories/colorful`}>
+              <span>Colorful</span>
+            </Link>
+            </p>
+        </nav>
       <Route exact={true} path="/" render={() => (
         <div class="demo-grid-ruler mdl-grid">
           {this.renderPhoto(0)}
@@ -50,6 +63,24 @@ class Main extends React.Component {
       <Route path="/Details/:pdex" render={( {match }) => (
         <div class="demo-grid-ruler mdl-grid">
           <Photo imgSrc={this.state.images[match.params.pdex]} />
+          <div>
+            <p>Image Width: 360</p>
+            <p>Image Height: 200</p>
+          </div>
+        </div>
+      )} />
+      <Route path="/Catagories/landscape" render={() => (
+        <div class="demo-grid-ruler mdl-grid">
+          {this.renderPhoto(1)}
+          {this.renderPhoto(2)}
+          {this.renderPhoto(5)}
+        </div>
+      )} />
+      <Route path="/Catagories/Colorful" render={() => (
+        <div class="demo-grid-ruler mdl-grid">
+          {this.renderPhoto(0)}
+          {this.renderPhoto(3)}
+          {this.renderPhoto(4)}
         </div>
       )} />
     </Router>
