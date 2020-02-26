@@ -1,4 +1,4 @@
 # Repository for class project
 
-cd single-page-app
-Start: npm start
+* cd single-page-app
+* Start: npm start
