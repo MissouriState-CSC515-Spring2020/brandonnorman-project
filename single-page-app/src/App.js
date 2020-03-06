@@ -51,7 +51,7 @@ class Main extends React.Component {
             </p>
         </nav>
       <Route exact={true} path="/" render={() => (
-        <div class="demo-grid-ruler mdl-grid">
+        <div className="demo-grid-ruler mdl-grid">
           {this.renderPhoto(0)}
           {this.renderPhoto(1)}
           {this.renderPhoto(2)}
@@ -61,7 +61,7 @@ class Main extends React.Component {
         </div>
       )}/>
       <Route path="/Details/:pdex" render={( {match }) => (
-        <div class="demo-grid-ruler mdl-grid">
+        <div className="demo-grid-ruler mdl-grid">
           <Photo imgSrc={this.state.images[match.params.pdex]} />
           <div>
             <p>Image Width: 360</p>
@@ -70,14 +70,14 @@ class Main extends React.Component {
         </div>
       )} />
       <Route path="/Catagories/landscape" render={() => (
-        <div class="demo-grid-ruler mdl-grid">
+        <div className="demo-grid-ruler mdl-grid">
           {this.renderPhoto(1)}
           {this.renderPhoto(2)}
           {this.renderPhoto(5)}
         </div>
       )} />
       <Route path="/Catagories/Colorful" render={() => (
-        <div class="demo-grid-ruler mdl-grid">
+        <div className="demo-grid-ruler mdl-grid">
           {this.renderPhoto(0)}
           {this.renderPhoto(3)}
           {this.renderPhoto(4)}
@@ -96,8 +96,8 @@ class Main extends React.Component {
 
 function Photo(props) {
   return (
-    <div class="mdl-cell">
-        <img src={props.imgSrc} width={360} height={200}/>
+    <div className="mdl-grid">
+        <img src={props.imgSrc} width={360} height={200} alt="" />
     </div>
   )
 }
