@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head lang='en'>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width'>
+	<title>Detail's Page</title>
+	<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+	<style>
+        h1 {
+            text-align: center;
+            font-size: x-large;
+        }
+        p {
+            font-size: larger;
+        }
+        #theImg {
+            max-width: 1024px;
+            max-height: 720px;
+        }
+
+	</style>
+</head>
+<body>
+    <h1>Details</h1>
+    <div class="demo-grid-ruler mdl-grid">
+		<div class="mdl-cell mdl-cell--1-col">
+				<img id="theImg"></img>
+        </div>
+    </div>
+    <p id="height"></p>
+    <p id="width"></p>
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                let params = new URLSearchParams(window.location.search);
+                let source = params.get("img");
+                let img = document.querySelector("#theImg");
+                img.src = source;
+                img.onload = function() {
+                    document.querySelector("#height").innerHTML = "height is " + document.querySelector("#theImg").height
+                    document.querySelector("#width").innerHTML = "width is " + document.querySelector("#theImg").width
+                }
+            })
+        </script>
+</body>
+</html>
