@@ -1,4 +1,5 @@
 # Repository for class project
 
 * cd single-page-app
-* Start: npm start
+* npm run build (must be a production environment for serviceworker to work)
+* serve -s build
