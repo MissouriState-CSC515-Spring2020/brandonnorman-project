@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 
 function App() {
   return (
@@ -37,52 +37,56 @@ class Main extends React.Component {
   render() {
     return(
     <Router>
-        <nav>
-            <Link to={`/`}>
-              <span>Home</span>
-            </Link>
-            <p>Catagories:
-            <Link to={`/Catagories/landscape`}>
-              <span>Landscapes</span>
-            </Link>
-            <Link to={`/Catagories/colorful`}>
-              <span>Colorful</span>
-            </Link>
-            </p>
-        </nav>
-      <Route exact={true} path="/" render={() => (
-        <div className="demo-grid-ruler mdl-grid">
-          {this.renderPhoto(0)}
-          {this.renderPhoto(1)}
-          {this.renderPhoto(2)}
-          {this.renderPhoto(3)}
-          {this.renderPhoto(4)}
-          {this.renderPhoto(5)}
-        </div>
-      )}/>
-      <Route path="/Details/:pdex" render={( {match }) => (
-        <div className="demo-grid-ruler mdl-grid">
-          <Photo imgSrc={this.state.images[match.params.pdex]} />
-          <div>
-            <p>Image Width: 360</p>
-            <p>Image Height: 200</p>
-          </div>
-        </div>
-      )} />
-      <Route path="/Catagories/landscape" render={() => (
-        <div className="demo-grid-ruler mdl-grid">
-          {this.renderPhoto(1)}
-          {this.renderPhoto(2)}
-          {this.renderPhoto(5)}
-        </div>
-      )} />
-      <Route path="/Catagories/Colorful" render={() => (
-        <div className="demo-grid-ruler mdl-grid">
-          {this.renderPhoto(0)}
-          {this.renderPhoto(3)}
-          {this.renderPhoto(4)}
-        </div>
-      )} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+            <nav>
+                <Link to={`/`}>
+                  <span>Home</span>
+                </Link>
+                <p>Catagories:
+                <Link to={`/Catagories/landscape`}>
+                  <span>Landscapes</span>
+                </Link>
+                <Link to={`/Catagories/colorful`}>
+                  <span>Colorful</span>
+                </Link>
+                </p>
+            </nav>
+          <Route exact={true} path="/" render={() => (
+            <div className="demo-grid-ruler mdl-grid">
+              {this.renderPhoto(0)}
+              {this.renderPhoto(1)}
+              {this.renderPhoto(2)}
+              {this.renderPhoto(3)}
+              {this.renderPhoto(4)}
+              {this.renderPhoto(5)}
+            </div>
+          )}/>
+          <Route path="/Details/:pdex" render={( {match }) => (
+            <div className="demo-grid-ruler mdl-grid">
+              <Photo imgSrc={this.state.images[match.params.pdex]} />
+              <div>
+                <p>Image Width: 360</p>
+                <p>Image Height: 200</p>
+              </div>
+            </div>
+          )} />
+          <Route path="/Catagories/landscape" render={() => (
+            <div className="demo-grid-ruler mdl-grid">
+              {this.renderPhoto(1)}
+              {this.renderPhoto(2)}
+              {this.renderPhoto(5)}
+            </div>
+          )} />
+          <Route path="/Catagories/Colorful" render={() => (
+            <div className="demo-grid-ruler mdl-grid">
+              {this.renderPhoto(0)}
+              {this.renderPhoto(3)}
+              {this.renderPhoto(4)}
+            </div>
+          )} />
+        </Switch>
+      </Suspense>
     </Router>
     );
   }
