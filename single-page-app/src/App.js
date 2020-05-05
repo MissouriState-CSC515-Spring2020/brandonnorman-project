@@ -38,7 +38,6 @@ class Main extends React.Component {
     return(
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
             <nav>
                 <Link to={`/`}>
                   <span>Home</span>
@@ -52,6 +51,7 @@ class Main extends React.Component {
                 </Link>
                 </p>
             </nav>
+          <Switch>
           <Route exact={true} path="/" render={() => (
             <div className="demo-grid-ruler mdl-grid">
               {this.renderPhoto(0)}
@@ -62,6 +62,8 @@ class Main extends React.Component {
               {this.renderPhoto(5)}
             </div>
           )}/>
+          </Switch>
+          <Switch>
           <Route path="/Details/:pdex" render={( {match }) => (
             <div className="demo-grid-ruler mdl-grid">
               <Photo imgSrc={this.state.images[match.params.pdex]} />
@@ -71,6 +73,8 @@ class Main extends React.Component {
               </div>
             </div>
           )} />
+          </Switch>
+          <Switch>
           <Route path="/Catagories/landscape" render={() => (
             <div className="demo-grid-ruler mdl-grid">
               {this.renderPhoto(1)}
@@ -78,6 +82,8 @@ class Main extends React.Component {
               {this.renderPhoto(5)}
             </div>
           )} />
+          </Switch>
+          <Switch>
           <Route path="/Catagories/Colorful" render={() => (
             <div className="demo-grid-ruler mdl-grid">
               {this.renderPhoto(0)}
@@ -85,7 +91,7 @@ class Main extends React.Component {
               {this.renderPhoto(4)}
             </div>
           )} />
-        </Switch>
+          </Switch>
       </Suspense>
     </Router>
     );
